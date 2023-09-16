@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <style>
+
+        #circle{
+            height: 200px;
+            width: 15%;
+            /* border: 1px solid red; */
+            margin: auto;
+            display:flex;
+            background-color: aqua;
+            border-radius: 50%;
+        }
+        div>h1{
+            /* border: 1px solid black; */
+            margin: auto;
+            justify-content: center;
+        }
+        h2{
+            /* border: 1px solid black; */
+            text-align: center;
+        }
+        #buttons{
+            width: 20%;
+            margin: auto;
+        }
+        button{
+           margin-left: 35px;
+           padding: 10px;
+        }
+       
+       
+        
+    </style>
+</head>
+<body>
+
+    <div id="circle">
+        <h1 id="h1">00:00:00</h1>
+    </div>
+    <h2><i>My-StopWatch</i></h2>
+    
+    
+    
+    <div id="buttons">
+
+             
+            <button id="start" onclick="startStop()">Start</button> 
+            <button id="pause" onclick="pause()">Pause</button>
+            <button id="reset" onclick="reset()">Reset</button>
+        
+        
+
+    </div>
+    
+</body>
+
+<script>
+
+    let watchTime=document.getElementById("h1");
+    let time;
+
+    let sec=0;
+    let min=0;
+    let hour=0;
+
+    let timeRunning=true;
+
+    let newWatchTime;
+     
+    function startStop(){
+
+
+        if(timeRunning){
+            
+            time=setInterval(displayTime,1000);
+        }
+        else{
+
+            clearInterval(time);
+        }
+        timeRunning=!timeRunning;
+    }
+
+
+
+    function displayTime(){
+          
+          sec++;
+     if(sec===60){
+
+         min++;
+         sec=0;
+         if(min===60){
+
+              hour++;
+              min=0;
+         }
+     }
+       
+     newWatchTime= doubleDigit(hour)+":"+doubleDigit(min)+":"+doubleDigit(sec);
+    
+     watchTime.innerText=newWatchTime;
+    
+     console.log(newWatchTime)
+
+
+ }
+
+ function doubleDigit(data)
+{
+
+       if(data<10){
+        data="0"+data;
+        return data;
+       }
+       else{
+        return data;
+       }
+}
+
+ 
+
+    function pause(){
+
+        clearInterval(time)
+        timeRunning=true;
+    }
+
+    function reset(){
+
+        clearInterval(time);
+
+        timeRunning=false;
+
+        sec=-1;
+        min=0;
+        hour=0;
+
+        
+        displayTime();
+    }
+
+
+
+   
+   
+
+</script>
+</html>
