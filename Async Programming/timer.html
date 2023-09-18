@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+    <style>
+      #circle {
+        height: 200px;
+        width: 15%;
+        /* border: 1px solid red; */
+        margin: auto;
+        display: flex;
+        background-color: rgb(255, 0, 81);
+        border-radius: 50%;
+      }
+      div > h1 {
+        /* border: 1px solid black; */
+        margin: auto;
+        justify-content: center;
+      }
+      h2 {
+        /* border: 1px solid black; */
+        text-align: center;
+      }
+      #buttons {
+        width: 20%;
+        margin: auto;
+      }
+      button {
+        margin-left: 35px;
+        padding: 10px;
+      }
+      #inpDiv {
+        max-width: fit-content;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="circle">
+      <h1 id="h1">00:00:00</h1>
+    </div>
+    <h2><i>Shubham Lalwadiya's Timer </i></h2>
+
+    <div id="inpDiv">
+      <input type="number" placeholder="hour" id="inpHour" />
+      <input type="number" placeholder="minute" id="inpMin" />
+      <input type="number" placeholder="second" id="inpSec" />
+      <button id="submit" onclick="submit()">Submit</button>
+    </div>
+
+    <div id="buttons">
+      <button id="start" onclick="startStop()">Start</button>
+      <button id="pause" onclick="pause()">Pause</button>
+      <button id="reset" onclick="reset()">Reset</button>
+    </div>
+  </body>
+
+  <script>
+
+
+    let watchTime = document.getElementById("h1");
+    let time;
+
+    let sec;
+    let min;
+    let hour;
+
+    let inpHourValue = document.getElementById("inpHour");
+    let inpMinValue = document.getElementById("inpMin");
+    let inpSecValue = document.getElementById("inpSec");
+
+    let timeRunning = true;
+
+    let newWatchTime;
+
+    function submit() {
+      hour = inpHourValue.value;
+      min = inpMinValue.value;
+      sec = inpSecValue.value;
+
+      if (hour > 24) {
+        alert("hour is less than 24 ");
+        inpHourValue.value="";
+      }
+      if (min > 60) {
+        alert("min shoud be less than 60");
+        inpMinValue.value="";
+      }
+      if (sec > 60) {
+        alert("second shoud be less than 60");
+        inpSecValue.value="";
+      }
+
+      if (hour > 24 || min > 60 || sec > 60) {
+        startStop();
+      }
+
+       inpHourValue.value="";
+       inpMinValue.value="";
+       inpSecValue.value="";
+
+       if (hour == "" || min == "") {
+        hour = 0;
+        min = 0;
+        newWatchTime =
+          doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
+        watchTime.innerText = newWatchTime;
+      }
+      else{
+
+        newWatchTime = doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
+
+      watchTime.innerText = newWatchTime;
+
+      }
+
+    }
+
+    function startStop() {
+      if (timeRunning) {
+        time = setInterval(displayTime, 1000);
+      } else {
+        clearInterval(time);
+      }
+      timeRunning = !timeRunning;
+    }
+
+    function displayTime() {
+      if (
+        sec > 0 &&
+        sec <= 60 &&
+        min >= 0 &&
+        min <= 60 &&
+        hour >= 0 &&
+        hour <= 24
+      ) {
+        sec--;
+        if (sec == 0 && min >= 0 && hour >= 0) {
+          sec = 60;
+          min--;
+          
+          
+          if (min == 0 && hour >= 0) {
+            min = 60;
+            hour--;
+            // console.log(hour," : ",min," : ",sec)
+          }
+          // console.log(hour," : ",min," : ",sec)
+          
+        }
+      } else {
+        stop();
+        hour = 0;
+        sec = 0;
+        min = 0;
+        
+      }
+
+      if (hour === "" || min ==="") {
+        hour = 0;
+        min = 0;
+        console.log("shubham",hour," : ",min," : ",sec)
+        newWatchTime = doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
+        watchTime.innerText = newWatchTime;
+      }
+      else{
+
+        console.log("shubham 1",hour," : ",min," : ",sec)
+        newWatchTime = doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
+
+      watchTime.innerText = newWatchTime;
+
+      }
+      
+
+      console.log(newWatchTime);
+    }
+
+    function doubleDigit(data) {
+      if (data < 10) {
+        data = "0" + data;
+        return data;
+      } else {
+        return data;
+      }
+    }
+
+    function pause() {
+      clearInterval(time);
+      timeRunning = true;
+    }
+
+    function reset() {
+      clearInterval(time);
+
+      timeRunning = false;
+
+      sec = 1;
+      min = 0;
+      hour = 0;
+
+      displayTime();
+    }
+
+    function stop() {
+      clearInterval(time);
+    }
+
+
+  </script>
+</html>
