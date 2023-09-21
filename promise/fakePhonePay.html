@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Phone Simulator</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(250, 250, 250);
+        color: #f1f3f3;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        
+      }
+
+      #phone {
+        width: 360px;
+        height: 640px;
+        margin: 20px auto;
+        background-color: #333;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        /* border: 3px solid black; */
+      }
+
+      #status-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #8a04f8;
+        position: absolute;
+      }
+
+      #screen {
+        width: 100%;
+        height: 800px;
+        background-color: rgb(19, 20, 21);
+        overflow: hidden;
+        position: absolute;
+        top: 20px;
+        left: 0;
+      }
+
+      #home {
+        width: 60px;
+        height: 60px;
+        background-color: orange;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 20px;
+        left: 150px;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+        border: 2px solid rgb(13, 14, 13);
+        margin: auto;
+      }
+      #home>img{
+
+        width: 60px;
+        border-radius: 50%;
+      }
+     
+
+      
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 75px;
+}
+
+.payment-container{
+
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-top: 150px;
+    /* border: 1px solid red; */
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #51068f;
+}
+
+.hidden {
+    display: none;
+}
+
+h1{
+    color: #f0f0f0;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+
+      
+
+
+    </style>
+  </head>
+  <body>
+    <div id="phone">
+      <div id="status-bar"></div>
+      <div id="screen">
+
+        <div class="payment-container">
+            <h1> PhonePay</h1>
+            <button id="payButton" onclick="paynow()">Start Payment</button>
+            <div id="loading" class="hidden">
+                <p>Processing...</p>
+            </div>
+            <div id="success" class="hidden">
+                <p>Payment is Successful</p>
+            </div>
+            <div id="failure" class="hidden">
+                <p>Payment is Failed</p>
+            </div>
+        </div>
+        
+      </div>
+      <div id="home"> <img src="data:image/png;base64,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" alt=""></div>
+    </div>
+  </body>
+
+  <script>
+
+
+let PayButton = document.getElementById('payButton');
+let load = document.getElementById('loading');
+let success = document.getElementById('success');
+let failure = document.getElementById('failure');
+let isSuccess;
+
+function simulatePayment() {
+    return new Promise((resolve, reject) => {
+        
+        setTimeout(() => {
+         isSuccess = Math.random() < 0.5;
+            if (isSuccess) {
+                resolve();
+            } else {
+                reject();
+            }
+        }, 2000);
+    });
+}
+
+function paynow(){
+
+    PayButton.disabled = true;
+    load.style.display = 'block';
+
+    simulatePayment()
+        .then(() => {
+            load.style.display = 'none';
+            success.style.display = 'block';
+        })
+        .catch(() => {
+            load.style.display = 'none';
+            failure.style.display = 'block';
+        });
+};
+  
+  </script>
+
+</html>

@@ -113,7 +113,7 @@
 
         newWatchTime = doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
 
-      watchTime.innerText = newWatchTime;
+        watchTime.innerText = newWatchTime;
 
       }
 
@@ -152,7 +152,9 @@
           
         }
       } else {
+
         stop();
+
         hour = 0;
         sec = 0;
         min = 0;
@@ -162,13 +164,13 @@
       if (hour === "" || min ==="") {
         hour = 0;
         min = 0;
-        console.log("shubham",hour," : ",min," : ",sec)
+        // console.log("shubham",hour," : ",min," : ",sec)
         newWatchTime = doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
         watchTime.innerText = newWatchTime;
       }
       else{
 
-        console.log("shubham 1",hour," : ",min," : ",sec)
+        // console.log("shubham 1",hour," : ",min," : ",sec)
         newWatchTime = doubleDigit(hour) + ":" + doubleDigit(min) + ":" + doubleDigit(sec);
 
       watchTime.innerText = newWatchTime;
