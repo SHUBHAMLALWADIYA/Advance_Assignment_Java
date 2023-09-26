@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+</head>
+<style>
+
+#container{
+    width:200px;
+    height:200px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: aquamarine;
+    margin: auto;
+    margin-top: 100px;
+    
+}
+h2,h3{
+    text-align: center; 
+    font-size: 30px; 
+    margin: 0px;
+}
+h2{
+    margin-top: 60px;
+}
+#buttons{
+    width: fit-content;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+}
+button{
+    font-size: 20px;
+    background-color: rgb(13, 77, 145);
+    color: azure;
+    cursor: pointer;
+    
+}
+
+button:nth-child(2){
+    margin:0px 30px;
+}
+
+</style>
+
+<body>
+    <div id="container">
+        <h2 id="num">0</h2>
+        <h3>count</h3>
+    </div>
+    <div id="buttons">
+        <button id="onOff" onclick="startStop()">Start / Stop</button>
+        <button id="increment" onclick="increase()">Increament</button>
+        <button id="decreament" onclick="decrease()">Decreament</button>
+    </div>
+</body>
+
+<script>
+
+let count=document.getElementById("num");
+let flag=true;
+let number=0;
+
+function startStop(){
+
+if(flag){
+    
+    running=setInterval(displaycount,1000);
+    
+}
+else{
+
+    clearInterval(running);
+}
+flag=!flag;
+}
+
+function displaycount(){
+
+    number++;
+
+    console.log(number)
+    count.innerText=number;
+  
+
+}
+
+function increase(){
+
+    clearInterval(running);
+
+    number++;
+
+    count.innerText=number;
+    flag=true;
+}
+
+function decrease(){
+
+    clearInterval(running);
+
+    number--;
+
+    count.innerText=number;
+    flag=true;
+}
+
+
+</script>
+
+</html>

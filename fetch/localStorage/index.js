@@ -14,6 +14,7 @@ let name = document.getElementById("inp1");
                     <td>${element[1]}</td>
                  </tr>`;
         });
+        console.log(Object.entries(localStorage))
         tbody.innerHTML = bag;
         name.value="";
         age.value="";
