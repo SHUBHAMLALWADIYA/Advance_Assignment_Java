@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather_1</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <div id="nav_bar">
+        <div>
+            <input type="text" id="city" placeholder="Type your city/state Name">
+            <button onclick="search()">Search</button>
+        </div>
+    </div>
+    <div id="main_content">
+         <div id="screen">
+            <div>
+                
+            </div>
+        </div>
+         <div id="map"><iframe
+            width="700"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?layer=mapnik&marker=${data.coord.lat},${data.coord.lon}">
+          </iframe></div>
+    </div>
+</body>
+<script>
+
+</script>
+</html>
