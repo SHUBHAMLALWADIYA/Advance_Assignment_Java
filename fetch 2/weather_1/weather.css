@@ -1,7 +1,8 @@
 body{
-    background-image: url();
-    background-color: #f05756;
+    background-color: deepskyblue;
+   
     margin: 0px;
+    font-family: 'Poppins', sans-serif;
 }
 button{
     margin: 0px;
@@ -17,39 +18,74 @@ input{
     border-radius: 10px;
 }
 #nav_bar{
-    background-color:#101111 ;
+    background-color:#223460 ;
     padding: 20px;
     margin: 0px;
 }
 #nav_bar>div{
     width:40%;
     margin: auto;
-    border: 1px solid white;
+   
 }
 #main_content{
     width: 90%;
-    border: 1px solid white;
     height: auto;
     margin: auto;
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
 }
-#screen>div{
+#main_content>#screen{
     width: 400px;
-    height: 500px;
+    height: auto;
     margin: auto;
     margin-left: 85px;
+    
+}
+
+#screen{
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+
+#myCity{
+    padding: 10px;
+    background-color: deepskyblue;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+#myCity>img{
+    width: 30%;
+}
+
+#myCity{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+#details{
+    background-color: rgb(168, 192, 200);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table, td {
     border: 1px solid black;
 }
 
-/* <iframe
-  width="600"
-  height="450"
-  style="border:0"
-  loading="lazy"
-  allowfullscreen
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=API_KEY
-    &q=Space+Needle,Seattle+WA">
-</iframe> */
+ td {
+    padding: 8px;
+    text-align: left;
+}
+th{
+    text-align: center;
+}
+
